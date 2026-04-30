@@ -312,6 +312,19 @@ main {
   box-shadow: 0 8px 24px rgba(16, 32, 51, 0.06);
 }
 
+.greeting-lead {
+  color: var(--navy) !important;
+  font-size: 20px !important;
+  font-weight: 900;
+}
+
+.signature {
+  margin-top: 24px !important;
+  color: var(--navy) !important;
+  font-weight: 900;
+  text-align: right;
+}
+
 .section-head {
   max-width: 760px;
   margin-bottom: 34px;
@@ -535,6 +548,38 @@ main {
 
 .map-placeholder {
   min-height: 360px;
+}
+
+.kakao-map {
+  width: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+}
+
+.kakao-map .map-placeholder {
+  min-height: 420px;
+  border: 0;
+}
+
+.map-info-window {
+  min-width: 210px;
+  padding: 14px 16px;
+  color: var(--gray-800);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.map-info-window strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--navy);
+  font-size: 16px;
+}
+
+.map-info-window span {
+  color: var(--gray-600);
 }
 
 .site-footer {

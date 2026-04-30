@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>문의하기 | 동일컨베어</title>
+  <title>오시는길 | 동일컨베어</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,10 +14,10 @@
       <nav class="main-nav" aria-label="주 메뉴">
         <ul>
           <li class="has-dropdown">
-            <a href="about.html">회사소개</a>
+            <a class="active" href="about.html">회사소개</a>
             <ul class="dropdown">
               <li><a href="about.html#greeting">대표자 인사말</a></li>
-              <li><a href="location.html">오시는길</a></li>
+              <li><a class="active" href="location.html">오시는길</a></li>
             </ul>
           </li>
           <li class="has-dropdown">
@@ -31,7 +31,7 @@
             </ul>
           </li>
           <li><a href="service.html">시공/A/S</a></li>
-          <li><a class="active" href="contact.html">문의하기</a></li>
+          <li><a href="contact.html">문의하기</a></li>
         </ul>
       </nav>
     </div>
@@ -40,24 +40,32 @@
   <main>
     <section class="page-banner">
       <div class="container">
-        <p>Contact</p>
-        <h1>문의하기</h1>
+        <p>Location</p>
+        <h1>오시는길</h1>
       </div>
     </section>
 
     <section class="section">
       <div class="container contact-grid">
         <div>
-          <p class="section-label">Inquiry</p>
-          <h2>제작, 설치, A/S 문의를 남겨주세요.</h2>
-          <p>컨베어 벨트 및 각종 산업용 벨트 관련 문의는 전화 또는 이메일로 접수해 주세요. 제품 용도, 설치 위치, 현장 조건을 알려주시면 더 빠르게 안내드릴 수 있습니다.</p>
+          <p class="section-label">Dongil Conveyor</p>
+          <h2>충청북도 충주시 목행산단2로 82</h2>
+          <p>동일컨베어는 충주시 목행산업단지 인근에서 컨베어 벨트 제작, 설치, 현장 시공 및 A/S를 진행하고 있습니다.</p>
           <div class="contact-actions">
             <a class="btn primary" href="tel:043-842-6800">전화 문의</a>
-            <a class="btn secondary" href="mailto:yungtae517@nvaer.com">이메일 문의</a>
+            <a class="btn secondary" href="contact.html">문의하기</a>
           </div>
         </div>
         <div class="contact-card">
           <dl>
+            <div>
+              <dt>회사명</dt>
+              <dd>동일컨베어</dd>
+            </div>
+            <div>
+              <dt>주소</dt>
+              <dd>충청북도 충주시 목행산단2로 82</dd>
+            </div>
             <div>
               <dt>전화번호</dt>
               <dd>043-842-6800</dd>
@@ -66,19 +74,24 @@
               <dt>이메일</dt>
               <dd>yungtae517@nvaer.com</dd>
             </div>
-            <div>
-              <dt>주소</dt>
-              <dd>충청북도 충주시 목행산단2로 82</dd>
-            </div>
-            <div>
-              <dt>대표자</dt>
-              <dd>정영태</dd>
-            </div>
           </dl>
         </div>
       </div>
     </section>
 
+    <section class="section light">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Map</p>
+          <h2>지도</h2>
+        </div>
+        <div id="kakao-map" class="kakao-map" aria-label="동일컨베어 위치 지도">
+          <div class="map-placeholder">
+            <span>지도를 불러오는 중입니다</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -90,6 +103,8 @@
       <p>이메일: yungtae517@nvaer.com</p>
     </div>
   </footer>
+  <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6fc9cfbd349ca8e3d1024385e9512056&libraries=services"></script>
   <script src="js/main.js"></script>
+  <script src="js/location-map.js"></script>
 </body>
 </html>
