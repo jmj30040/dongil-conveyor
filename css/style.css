@@ -1604,6 +1604,33 @@ main {
 
   .business-item {
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+  }
+
+  .product-card {
+    overflow: hidden;
+  }
+
+  .product-media,
+  .business-image {
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .product-media img,
+  .business-image {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-body,
+  .business-content {
+    position: relative;
+    z-index: 1;
+    background: var(--white);
   }
 
   .business-content {
