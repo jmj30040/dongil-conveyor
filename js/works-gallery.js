@@ -39,7 +39,6 @@ const renderImages = (images) => {
         <div class="work-body">
           <span>시공사례 ${String(index + 1).padStart(2, "0")}</span>
           <h3>${title}</h3>
-          <p>동일컨베어 현장 시공 및 설치 사진입니다.</p>
         </div>
       </article>
     `;
