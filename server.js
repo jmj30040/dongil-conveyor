@@ -14,10 +14,41 @@ const contentTypes = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
   ".svg": "image/svg+xml",
+  ".webp": "image/webp",
+  ".gif": "image/gif",
 };
+
+const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 
 const server = http.createServer((req, res) => {
   const requestPath = decodeURIComponent(req.url.split("?")[0]);
+
+  if (requestPath === "/api/works-images") {
+    const worksDir = path.join(root, "images", "works");
+
+    fs.readdir(worksDir, { withFileTypes: true }, (error, entries) => {
+      if (error) {
+        res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+        res.end("[]");
+        return;
+      }
+
+      const images = entries
+        .filter((entry) => entry.isFile())
+        .map((entry) => entry.name)
+        .filter((name) => imageExtensions.has(path.extname(name).toLowerCase()))
+        .sort((a, b) => a.localeCompare(b, "ko"))
+        .map((name) => ({
+          name,
+          download_url: `/images/works/${encodeURIComponent(name)}`,
+        }));
+
+      res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+      res.end(JSON.stringify(images));
+    });
+    return;
+  }
+
   const routePath = requestPath === "/" ? "/index.html" : requestPath;
   const filePath = path.normalize(path.join(root, routePath));
 
