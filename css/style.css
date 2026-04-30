@@ -301,6 +301,17 @@ main {
   font-size: 17px;
 }
 
+.anchor-section {
+  scroll-margin-top: 76px;
+}
+
+.greeting-box {
+  padding: 30px;
+  background: var(--white);
+  border-left: 4px solid var(--orange);
+  box-shadow: 0 8px 24px rgba(16, 32, 51, 0.06);
+}
+
 .section-head {
   max-width: 760px;
   margin-bottom: 34px;
