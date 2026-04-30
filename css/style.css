@@ -956,38 +956,86 @@ main {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 74px 24px 24px;
-  background: rgba(9, 21, 34, 0.88);
+  padding: 24px;
+  background: rgba(9, 21, 34, 0.82);
+  backdrop-filter: blur(6px);
 }
 
 .gallery-lightbox.is-open {
   display: flex;
 }
 
-.gallery-lightbox img {
-  max-width: min(1100px, 100%);
-  max-height: calc(100vh - 120px);
-  object-fit: contain;
-  background: var(--white);
+.lightbox-panel {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: calc(100vh - 48px);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-items: center;
+  padding: 54px 64px 42px;
+  background: #0f1a28;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.gallery-lightbox img {
+  width: 100%;
+  max-height: calc(100vh - 170px);
+  object-fit: contain;
 }
 
 .lightbox-close {
   position: absolute;
-  top: 22px;
-  right: 22px;
-  min-height: 42px;
-  padding: 0 16px;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
   color: var(--white);
+  font-size: 30px;
+  line-height: 1;
   font-weight: 900;
-  background: var(--orange);
+  background: rgba(255, 255, 255, 0.1);
   border: 0;
   cursor: pointer;
 }
 
 .lightbox-close:hover,
 .lightbox-close:focus {
-  background: var(--orange-dark);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  width: 46px;
+  height: 58px;
+  color: var(--white);
+  font-size: 44px;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 0;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.lightbox-nav:hover,
+.lightbox-nav:focus {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lightbox-prev {
+  left: 12px;
+}
+
+.lightbox-next {
+  right: 12px;
+}
+
+.lightbox-count {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  font-weight: 800;
+  text-align: center;
 }
 
 .map-placeholder {
@@ -1285,5 +1333,39 @@ main {
 
   .copyright {
     display: grid;
+  }
+
+  .gallery-lightbox {
+    padding: 12px;
+  }
+
+  .lightbox-panel {
+    max-height: calc(100vh - 24px);
+    padding: 56px 12px 44px;
+  }
+
+  .gallery-lightbox img {
+    max-height: calc(100vh - 172px);
+  }
+
+  .lightbox-nav {
+    top: auto;
+    bottom: 12px;
+    width: 44px;
+    height: 38px;
+    font-size: 34px;
+    transform: none;
+  }
+
+  .lightbox-prev {
+    left: 12px;
+  }
+
+  .lightbox-next {
+    right: 12px;
+  }
+
+  .lightbox-count {
+    margin-top: 12px;
   }
 }
