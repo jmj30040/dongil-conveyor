@@ -1,4 +1,7 @@
 const gallery = document.getElementById("works-gallery");
+const lightbox = document.getElementById("gallery-lightbox");
+const lightboxImage = lightbox?.querySelector("img");
+const lightboxClose = lightbox?.querySelector(".lightbox-close");
 
 const repoOwner = "jmj30040";
 const repoName = "dongil-conveyor";
@@ -28,21 +31,36 @@ const renderImages = (images) => {
     return;
   }
 
-  gallery.innerHTML = images.map((image, index) => {
+  gallery.innerHTML = images.map((image) => {
     const title = formatTitle(image.name);
 
     return `
       <article class="work-card">
-        <div class="work-media">
+        <button class="work-media" type="button" data-full-image="${image.download_url}" data-title="${title}">
           <img src="${image.download_url}" alt="${title} 사진" loading="lazy">
-        </div>
-        <div class="work-body">
-          <span>시공사례 ${String(index + 1).padStart(2, "0")}</span>
-          <h3>${title}</h3>
-        </div>
+        </button>
       </article>
     `;
   }).join("");
+};
+
+const openLightbox = (imageUrl, title) => {
+  if (!lightbox || !lightboxImage) return;
+
+  lightboxImage.src = imageUrl;
+  lightboxImage.alt = `${title} 확대 이미지`;
+  lightbox.classList.add("is-open");
+  lightbox.setAttribute("aria-hidden", "false");
+  lightboxClose?.focus();
+};
+
+const closeLightbox = () => {
+  if (!lightbox || !lightboxImage) return;
+
+  lightbox.classList.remove("is-open");
+  lightbox.setAttribute("aria-hidden", "true");
+  lightboxImage.src = "";
+  lightboxImage.alt = "";
 };
 
 const loadWorksImages = async () => {
@@ -77,3 +95,25 @@ const loadWorksImages = async () => {
 };
 
 loadWorksImages();
+
+gallery?.addEventListener("click", (event) => {
+  const target = event.target.closest(".work-media");
+
+  if (!target) return;
+
+  openLightbox(target.dataset.fullImage, target.dataset.title || "시공사례");
+});
+
+lightboxClose?.addEventListener("click", closeLightbox);
+
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+});
