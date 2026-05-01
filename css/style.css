@@ -1620,9 +1620,14 @@ main {
     aspect-ratio: 16 / 10;
   }
 
-  .product-media img,
-  .business-image {
+  .product-media img {
     height: 100%;
+    object-fit: cover;
+  }
+
+  .business-image {
+    width: 100%;
+    height: auto;
     object-fit: cover;
   }
 
@@ -1631,6 +1636,10 @@ main {
     position: relative;
     z-index: 1;
     background: var(--white);
+  }
+
+  .accent-card .product-body {
+    background: var(--navy);
   }
 
   .business-content {
