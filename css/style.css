@@ -509,6 +509,7 @@ main {
 .product-card,
 .strength-card,
 .application-list article {
+  overflow: hidden;
   background: var(--white);
   border: 1px solid var(--gray-100);
   box-shadow: 0 8px 24px rgba(16, 32, 51, 0.06);
@@ -524,7 +525,9 @@ main {
 }
 
 .product-media {
-  min-height: 190px;
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+  overflow: hidden;
   color: var(--gray-600);
   background:
     linear-gradient(135deg, rgba(16, 32, 51, 0.08), rgba(31, 111, 235, 0.10)),
@@ -833,8 +836,7 @@ main {
 
 .business-image {
   width: 100%;
-  min-height: 190px;
-  aspect-ratio: 3 / 2;
+  height: 200px;
   border: 1px solid var(--gray-100);
 }
 
@@ -1468,6 +1470,7 @@ main {
   }
 
   .business-image {
+    height: clamp(190px, 62.5vw, 360px);
     min-height: 0;
     aspect-ratio: 16 / 10;
     border: 0;
@@ -1616,7 +1619,6 @@ main {
   .product-media,
   .business-image {
     min-height: 0;
-    height: auto;
     aspect-ratio: 16 / 10;
   }
 
@@ -1627,7 +1629,7 @@ main {
 
   .business-image {
     width: 100%;
-    height: auto;
+    height: clamp(180px, 62.5vw, 320px);
     object-fit: cover;
   }
 
