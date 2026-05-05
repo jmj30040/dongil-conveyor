@@ -15,7 +15,7 @@ const formatTitle = (filename) => {
   return name
     .replace(/[-_]+/g, " ")
     .replace(/\s+/g, " ")
-    .trim() || "시공사례";
+    .trim() || "시공 사진";
 };
 
 const renderEmpty = (message) => {
@@ -48,7 +48,7 @@ const renderImages = (images) => {
   if (!gallery) return;
 
   if (!images.length) {
-    renderEmpty("등록된 시공사례 이미지가 없습니다.");
+    renderEmpty("등록된 시공 사진 이미지가 없습니다.");
     return;
   }
 
@@ -101,7 +101,7 @@ gallery?.addEventListener("click", (event) => {
 
   if (!target) return;
 
-  openLightbox(target.dataset.fullImage, target.dataset.title || "시공사례");
+  openLightbox(target.dataset.fullImage, target.dataset.title || "시공 사진");
 });
 
 lightbox?.addEventListener("click", (event) => {

@@ -16,6 +16,7 @@ const contentTypes = {
   ".svg": "image/svg+xml",
   ".webp": "image/webp",
   ".gif": "image/gif",
+  ".mp4": "video/mp4",
 };
 
 const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
@@ -50,7 +51,10 @@ const server = http.createServer((req, res) => {
   }
 
   const routePath = requestPath === "/" ? "/index.html" : requestPath;
-  const filePath = path.normalize(path.join(root, routePath));
+  const publicRoutePath = routePath.startsWith("/videos/")
+    ? path.join("public", routePath)
+    : routePath;
+  const filePath = path.normalize(path.join(root, publicRoutePath));
 
   if (!filePath.startsWith(root)) {
     res.writeHead(403, { "Content-Type": "text/plain; charset=utf-8" });
