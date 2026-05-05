@@ -51,10 +51,7 @@ const server = http.createServer((req, res) => {
   }
 
   const routePath = requestPath === "/" ? "/index.html" : requestPath;
-  const publicRoutePath = routePath.startsWith("/videos/")
-    ? path.join("public", routePath)
-    : routePath;
-  const filePath = path.normalize(path.join(root, publicRoutePath));
+  const filePath = path.normalize(path.join(root, routePath));
 
   if (!filePath.startsWith(root)) {
     res.writeHead(403, { "Content-Type": "text/plain; charset=utf-8" });
